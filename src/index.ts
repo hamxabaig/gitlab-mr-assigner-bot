@@ -67,6 +67,10 @@ app.post('/mr-webhook', verifyKey, async (req, res) => {
   res.send({success: true});
 })
 
+app.get('/ping', verifyKey, async (req, res) => {
+	res.send({data: 'pong'});
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })

@@ -1,5 +1,6 @@
 import {PriorityRoundRobin} from 'round-robin-js';
 import { Reviewer } from './types';
+import path from 'path';
 import fs from 'fs';
 import { unionBy } from 'lodash';
 
@@ -51,7 +52,7 @@ export class MRAssigner {
 	}
 
 	private getDefaultReviewers(): Promise<Reviewer[]> {
-		const jsonStr = fs.readFileSync('./reviewers.json', { encoding: 'utf-8'});
+		const jsonStr = fs.readFileSync(path.resolve(__dirname, './reviewers.json'), { encoding: 'utf-8'});
 		return JSON.parse(jsonStr);
 	}
 }
